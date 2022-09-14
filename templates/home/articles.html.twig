@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - Articles{% endblock %}
+
+{% block body %}
+<h1>List de tous les articles</h1>
+
+<div class="row">
+{% for art in articles|reverse %}
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{art.title}}</h5>
+              {# <a href="{{ path('app_article_show', {'id': art.id}) }}">show</a> #}
+              {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin_article_edit', {'id': art.id}) }}">edit</a>
+                {% endif %}
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
