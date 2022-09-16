@@ -36,6 +36,7 @@ class AppFixtures extends Fixture
             $article
                 ->setTitle($faker->realText(30))
                 ->setDescription($faker->sentence(150))
+                ->setPrice($faker->randomFloat(2, 10, 100))
                 ->setCategory($faker->randomElement($dataCategories));
             
             $manager->persist($article);
